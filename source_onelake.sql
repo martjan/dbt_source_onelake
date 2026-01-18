@@ -3,8 +3,8 @@
     Generates an OPENROWSET statement for reading files from OneLake.
     
     Args:
-        source_name: Name of the source (e.g., 'anlb')
-        table_name: Name of the table in source (e.g., 'anlb_beheerpakket')
+        source_name: Name of the source (e.g., 'jaffle_shop')
+        table_name: Name of the table in source (e.g., 'orders')
     
     Usage in model:
         {{ source_onelake('anlb', 'anlb_beheerpakket') }}
@@ -120,5 +120,6 @@ WITH (
 {%- endset %}
 
 {{ return(sql | trim) }}
+
 
 {%- endmacro %}
