@@ -1,0 +1,65 @@
+sources:
+  - name: anlb
+    description: "Agrarisch Natuur en Landschapsbeheer (ANLB) OneLake dropzone"
+    meta:
+      onelake:
+        datasource_name: anlb_filestore
+        onelake_path: https://onelake.dfs.fabric.microsoft.com/
+        target_workspace: be8d48ab-c348-4faf-af6c-369f11d39a5d
+        target_lakehouse: 17144396-6ecb-4e13-a663-4817f26ec2f8
+        files_root: Files
+
+    tables:
+      # Business masters
+      - name: ANLb_Beheerpakket_Indeling_csv
+        description: 'Management packages/schemes for ANLB program (CSV format)'
+        meta:
+          onelake:
+            filename: ANLb_Beheerpakket_Indeling.csv
+            folder: 4_Productie
+            format: CSV
+            field_terminator: ';'
+            row_terminator: '0x0A'
+            first_row: 2
+        columns:
+          - name: beheerpakket_groep_code
+            data_type: varchar(100)
+          - name: beheerpakket_groep_naam
+            data_type: varchar(200)
+          - name: beheerpakket_code
+            data_type: varchar(50)
+          - name: beheerpakket_naam
+            data_type: varchar(200)
+          - name: niveau_1
+            data_type: varchar(100)
+          - name: niveau_2
+            data_type: varchar(100)
+          - name: niveau_3
+            data_type: varchar(100)
+          - name: weging
+            data_type: varchar(50)
+
+      - name: ANLb_Beheerpakket_Indeling_Parquet
+        description: 'Management packages/schemes for ANLB program (Parquet format)'
+        meta:
+          onelake:
+            filename: ANLb_Beheerpakket_Indeling.parquet
+            folder: 4_Productie
+            format: Parquet
+        columns:
+          - name: Beheerpakketgroep
+            data_type: varchar(100)
+          - name: Naam beheerpakketgroep
+            data_type: varchar(200)
+          - name: Beheerpakketvariant
+            data_type: varchar(50)
+          - name: Naam beheerpakketvariant
+            data_type: varchar(200)
+          - name: KPI
+            data_type: varchar(100)
+          - name: Categorie
+            data_type: varchar(100)
+          - name: Subcategorie
+            data_type: varchar(100)
+          - name: Weging
+            data_type: varchar(50)
