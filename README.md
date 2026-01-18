@@ -1,14 +1,12 @@
 ﻿# dbt Macro: source_onelake
 
-Read CSV and Parquet files from Microsoft Fabric OneLake directly in dbt models via `OPENROWSET` statements.
+Read CSV and Parquet files sources directly in dbt models using `OPENROWSET` treating onelake as a source {{ source_onelake }} 
 
 ## Features
 
 - ✅ CSV and Parquet formats
 - ✅ Configurable CSV delimiters, line endings, row skipping
 - ✅ OneLake path auto-construction from metadata
-- ✅ Column type enforcement
-- ✅ Case-sensitive path validation
 
 ## Setup
 
@@ -131,10 +129,10 @@ Reading PARQUET my_source.my_data_parquet from https://onelake.dfs.fabric.micros
 ## Requirements
 
 - dbt 1.0+
-- SQL backend with `OPENROWSET` (SQL Server 2019+, Synapse, Fabric SQL Endpoint)
+- Fabric SQL Endpoint with OPENROWSET access to Onelake
 - Microsoft Fabric workspace and OneLake access
 - Workspace ID, Lakehouse ID, and workspace/lakehouse credentials
 
 ## License
 
-GNU 
+GNU General Public License v3.0 
