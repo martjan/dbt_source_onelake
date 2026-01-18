@@ -103,6 +103,24 @@ The macro auto-handles format differences:
 - **CSV**: FIRSTROW, FIELDTERMINATOR, ROWTERMINATOR options
 - **Parquet**: No CSV options; auto-quotes column names with spaces
 
+The compiled code for the included example model will look like this:
+```select
+    *
+from OPENROWSET(
+    BULK 'https://onelake.dfs.fabric.microsoft.com/be8d48ab-c348-4faf-af6c-369f11d39a5d/17144396-6ecb-4e13-a663-4817f26ec2f8/Files/4_Productie/ANLb_Beheerpakket_Indeling.parquet',
+    FORMAT = 'PARQUET'
+)
+WITH (
+    Beheerpakketgroep varchar(100),
+    [Naam beheerpakketgroep] varchar(200),
+    Beheerpakketvariant varchar(50),
+    [Naam beheerpakketvariant] varchar(200),
+    KPI varchar(100),
+    Categorie varchar(100),
+    Subcategorie varchar(100),
+    Weging varchar(50)
+)
+```
 ## Troubleshooting
 
 | Error | Cause | Solution |
